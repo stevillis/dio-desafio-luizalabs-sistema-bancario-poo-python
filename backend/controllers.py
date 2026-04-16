@@ -5,10 +5,10 @@ from .conta import ContaCorrente
 from .transacao import Deposito, Saque
 
 
-class CLIController:
-    def __init__(self):
-        self._clientes = []
-        self._contas = []
+class UIController:
+    def __init__(self, clientes=None, contas=None):
+        self._clientes = clientes if clientes is not None else []
+        self._contas = contas if contas is not None else []
 
     @property
     def clientes(self):
@@ -18,6 +18,8 @@ class CLIController:
     def contas(self):
         return self._contas
 
+
+class CLIController(UIController):
     def filtrar_cliente(self, cpf):
         clientes_filtrados = [
             cliente for cliente in self.clientes if cliente.cpf == cpf
@@ -96,7 +98,7 @@ class CLIController:
         )
 
         cliente = PessoaFisica(
-            nome=nome, data_nascimento=data_nascimento, cpf=cpf, endereco=endereco
+            nome=nome, cpf=cpf, data_nascimento=data_nascimento, endereco=endereco
         )
 
         self.clientes.append(cliente)
@@ -134,3 +136,24 @@ class CLIController:
         [q]\tSair
         => """
         return input(textwrap.dedent(menu_str))
+
+
+class StreamlitController(UIController):
+    def __init__(self, clientes, contas):
+        super().__init__(clientes, contas)
+
+    def filtrar_cliente(self, cpf):
+        clientes_filtrados = [
+            cliente for cliente in self.clientes if cliente.cpf == cpf
+        ]
+        return clientes_filtrados[0] if clientes_filtrados else None
+
+    def criar_cliente(self, nome, cpf, data_nascimento, endereco):
+        cliente = PessoaFisica(
+            nome=nome,
+            cpf=cpf,
+            data_nascimento=data_nascimento,
+            endereco=endereco,
+        )
+
+        self.clientes.append(cliente)
