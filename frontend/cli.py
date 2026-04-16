@@ -22,8 +22,7 @@ def main():
         elif opcao == "nu":
             cli_controller.criar_cliente()
         elif opcao == "nc":
-            numero_conta = len(cli_controller.contas) + 1
-            cli_controller.criar_conta(numero_conta=numero_conta)
+            cli_controller.criar_conta()
         elif opcao == "lc":
             cli_controller.listar_contas()
         elif opcao == "q":

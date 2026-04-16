@@ -105,7 +105,7 @@ class CLIController(UIController):
 
         print("\n===== Cliente criado com sucesso! =====")
 
-    def criar_conta(self, numero_conta):
+    def criar_conta(self):
         cpf = input("Informe o CPF do cliente: ")
         cliente = self.filtrar_cliente(cpf)
 
@@ -113,6 +113,7 @@ class CLIController(UIController):
             print("Cliente não encontrado! Fluxo de criação de conta encerrado.")
             return None
 
+        numero_conta = len(self.contas) + 1
         conta = ContaCorrente.nova_conta(cliente=cliente, numero=numero_conta)
         self.contas.append(conta)
         cliente.contas.append(conta)
@@ -157,3 +158,9 @@ class StreamlitController(UIController):
         )
 
         self.clientes.append(cliente)
+
+    def criar_conta(self, cliente):
+        numero_conta = len(self.contas) + 1
+        conta = ContaCorrente.nova_conta(cliente=cliente, numero=numero_conta)
+        self.contas.append(conta)
+        cliente.contas.append(conta)
