@@ -21,5 +21,5 @@ class PessoaFisica(Cliente):
     def __init__(self, nome: str, data_nascimento: str, cpf: str, endereco: str):
         super().__init__(endereco)
         self.nome = nome
-        self.data_nascimento = datetime.strptime(data_nascimento, "%d-%m-%Y")
+        self.data_nascimento = datetime.strptime(data_nascimento, "%d/%m/%Y")
         self.cpf = cpf

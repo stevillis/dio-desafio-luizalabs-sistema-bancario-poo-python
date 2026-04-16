@@ -1,59 +1,31 @@
 import sys
-import textwrap
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 
-from backend.controllers import (
-    criar_conta,
-    criar_cliente,
-    depositar,
-    exibir_extrato,
-    sacar,
-)
-
-
-def listar_contas(contas):
-    for conta in contas:
-        print("=" * 100)
-        print(textwrap.dedent(str(conta)))
-
-
-def menu():
-    menu = """\n
-    ==================== MENU ====================
-    [d]\tDepositar
-    [s]\tSacar
-    [e]\tExtrato
-    [nc]\tNova conta
-    [lc]\tListar contas
-    [nu]\tNovo usuário
-    [q]\tSair
-    => """
-    return input(textwrap.dedent(menu))
+from backend.controllers import CLIController
 
 
 def main():
-    clientes = []
-    contas = []
+    cli_controller = CLIController()
 
     while True:
-        opcao = menu()
+        opcao = cli_controller.menu()
 
         if opcao == "d":
-            depositar(clientes)
+            cli_controller.depositar()
         elif opcao == "s":
-            sacar(clientes)
+            cli_controller.sacar()
         elif opcao == "e":
-            exibir_extrato(clientes)
+            cli_controller.exibir_extrato()
         elif opcao == "nu":
-            criar_cliente(clientes)
+            cli_controller.criar_cliente()
         elif opcao == "nc":
-            numero_conta = len(contas) + 1
-            criar_conta(numero_conta=numero_conta, clientes=clientes, contas=contas)
+            numero_conta = len(cli_controller.contas) + 1
+            cli_controller.criar_conta(numero_conta=numero_conta)
         elif opcao == "lc":
-            listar_contas(contas)
+            cli_controller.listar_contas()
         elif opcao == "q":
             break
         else:
