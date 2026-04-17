@@ -65,6 +65,30 @@ if __name__ == "__main__":
     st.set_page_config(
         page_title="Desafio LuizaLabs - Sistema Bancário em POO com Python",
         page_icon="🐍",
+        layout="wide",
     )
 
-    st.title("Desafio LuizaLabs - Sistema Bancário em POO com Python")
+    st.title("🏦 Desafio LuizaLabs - Sistema Bancário em POO")
+
+    st.markdown("""
+    ### Bem-vindo ao Sistema Bancário em POO com Python!
+
+    O desafio proposto pela DIO (Digital Innovation One) em parceria com o LuizaLabs exigia a evolução do Sistema Bancário apresentado no Bootcamp Luizalabs - Back-end com Python - 2º Edição, aprofundando o uso de Programação Orientada a Objetos (POO) em Python.
+
+    O objetivo foi melhorar a aplicação bancária em formato CLI apresentada no Bootcamp, tornando-a mais robusta, escalável e interativa, modelando entidades do mundo real (Clientes, Contas, Transações) de maneira elegante e com código limpo.
+
+    Para atender ao desafio, dividi o projeto em Backend e Frontend:
+    - **Backend POO:** Domínio completo construído com classes e princípios sólidos de Orientação a Objetos.
+    - **Frontend Interativo:** Criei este dashboard web moderno utilizando **Streamlit**, mantendo a antiga interface de linha de comando (CLI) e disponbilizando também uma experiência visual rica com esta aplicação web.
+
+    Um sistema bancário totalmente funcional e intuitivo. Entre as funcionalidades principais desenvolvidas, estão:
+    - 👤 **Gestão de Clientes e Contas:** Cadastro e visualização de clientes e contas.
+    - 💸 **Operações Financeiras:** Saques e Depósitos com validações, regras de negócio e limites diários.
+    - 📄 **Extrato Dinâmico:** Acompanhamento claro e formatado do histórico de cada conta.
+
+    ---
+    ### O que você está esperando?
+    👉 **Navegue pelas abas laterais** para explorar o sistema.
+
+    ℹ️ Alguns dados já foram pré-carregados para simular operações reais.
+    """)
