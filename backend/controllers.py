@@ -1,3 +1,4 @@
+import pandas as pd
 import textwrap
 
 from .cliente import PessoaFisica
@@ -164,3 +165,20 @@ class StreamlitController(UIController):
         conta = ContaCorrente.nova_conta(cliente=cliente, numero=numero_conta)
         self.contas.append(conta)
         cliente.contas.append(conta)
+
+    def listar_contas(self):
+        numeros_list = []
+        agencias_list = []
+        titulares_list = []
+        for conta in self.contas:
+            numeros_list.append(conta.numero)
+            agencias_list.append(conta.agencia)
+            titulares_list.append(conta.cliente.nome)
+
+        return pd.DataFrame(
+            {
+                "Agência": agencias_list,
+                "Titular": titulares_list,
+                "C/C": numeros_list,
+            }
+        )
