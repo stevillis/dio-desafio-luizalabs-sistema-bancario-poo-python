@@ -36,7 +36,21 @@ O resultado é um sistema bancário moderno, 100% funcional, e testável atravé
 
 1. Instale o Python 3.11.9 ou superior.
 
-2. Instale as dependências:
+2. (Recomendado) Crie e ative um ambiente virtual (venv) para isolar as dependências:
+
+   * No Windows:
+     ```bash
+     python -m venv venv
+     venv\Scripts\activate
+     ```
+
+   * No Linux/macOS:
+     ```bash
+     python -m venv venv
+     source venv/bin/activate
+     ```
+
+3. Instale as dependências:
 
    ```bash
    pip install -r requirements.txt
