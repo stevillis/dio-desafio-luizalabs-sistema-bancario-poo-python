@@ -62,16 +62,18 @@ if __name__ == "__main__":
                         else:
                             if conta:
                                 if valor_deposito > 0:
-                                    streamlit_controller.depositar(
+                                    sucesso, mensagem = streamlit_controller.depositar(
                                         cliente=cliente,
                                         conta=conta,
                                         valor_deposito=valor_deposito,
                                     )
-                                    st.success("Depósito realizado com sucesso!")
-
-                                    time.sleep(2)
-                                    del st.session_state["depositar_form_loaded"]
-                                    st.rerun()
+                                    if sucesso:
+                                        st.success(mensagem)
+                                        time.sleep(2)
+                                        del st.session_state["depositar_form_loaded"]
+                                        st.rerun()
+                                    else:
+                                        st.error(mensagem)
                                 else:
                                     st.error(
                                         "O valor do depósito deve ser maior que zero!"

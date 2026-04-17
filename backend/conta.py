@@ -34,27 +34,22 @@ class Conta:
     def historico(self):
         return self._historico
 
-    def sacar(self, valor) -> bool:
+    def sacar(self, valor) -> tuple[bool, str]:
         if valor > self.saldo:
-            print("Operação falhou! Você não tem saldo suficiente.")
-            return False
+            return False, "Operação falhou! Você não tem saldo suficiente."
 
         if valor > 0:
             self._saldo -= valor
-            print("Saque realizado com sucesso!")
-            return True
+            return True, "Saque realizado com sucesso!"
 
-        print("Operação falhou! O valor informado é inválido.")
-        return False
+        return False, "Operação falhou! O valor informado é inválido."
 
-    def depositar(self, valor) -> bool:
+    def depositar(self, valor) -> tuple[bool, str]:
         if valor > 0:
             self._saldo += valor
-            print("Depósito realizado com sucesso!")
-            return True
+            return True, "Depósito realizado com sucesso!"
 
-        print("Operação falhou! O valor informado é inválido.")
-        return False
+        return False, "Operação falhou! O valor informado é inválido."
 
 
 class ContaCorrente(Conta):
@@ -65,7 +60,7 @@ class ContaCorrente(Conta):
         self._limite = limite
         self._limite_saques = limite_saques
 
-    def sacar(self, valor) -> bool:
+    def sacar(self, valor) -> tuple[bool, str]:
         numero_saques = len(
             [
                 transacao
@@ -75,12 +70,10 @@ class ContaCorrente(Conta):
         )
 
         if valor > self._limite:
-            print("Operação falhou! O valor do saque excede o limite.")
-            return False
+            return False, "Operação falhou! O valor do saque excede o limite."
 
         if numero_saques >= self._limite_saques:
-            print("Operação falhou! Número máximo de saques excedido.")
-            return False
+            return False, "Operação falhou! Número máximo de saques excedido."
 
         return super().sacar(valor)
 

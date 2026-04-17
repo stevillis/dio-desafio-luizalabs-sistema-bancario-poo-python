@@ -47,10 +47,14 @@ class CLIController(UIController):
         if not conta:
             return None
 
-        valor_deposito = float(input("Informe o valor do depósito: "))
-        transacao = tipo_transacao(valor_deposito)
+        tipo_nome = "saque" if tipo_transacao.__name__ == "Saque" else "depósito"
+        valor_operacao = float(f"Informe o valor do {tipo_nome}: ")
+        transacao = tipo_transacao(valor_operacao)
 
-        cliente.realizar_transacao(conta, transacao)
+        resultado = cliente.realizar_transacao(conta, transacao)
+        if resultado is not None:
+            _, mensagem = resultado
+            print(mensagem)
 
     def depositar(self):
         self._rotear_transacao(Deposito)
@@ -192,4 +196,4 @@ class StreamlitController(UIController):
 
     def depositar(self, cliente, conta, valor_deposito):
         transacao = Deposito(valor_deposito)
-        cliente.realizar_transacao(conta, transacao)
+        return cliente.realizar_transacao(conta, transacao)

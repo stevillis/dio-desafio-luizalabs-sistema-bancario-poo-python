@@ -22,9 +22,12 @@ class Saque(Transacao):
     def valor(self) -> float:
         return self._valor
 
-    def registrar(self, conta) -> None:
-        if conta.sacar(self.valor):
+    def registrar(self, conta):
+        sucesso, mensagem = conta.sacar(self.valor)
+        if sucesso:
             conta.historico.adicionar_transacao(self)
+
+        return sucesso, mensagem
 
 
 class Deposito(Transacao):
@@ -35,6 +38,9 @@ class Deposito(Transacao):
     def valor(self) -> float:
         return self._valor
 
-    def registrar(self, conta) -> None:
-        if conta.depositar(self.valor):
+    def registrar(self, conta):
+        sucesso, mensagem = conta.depositar(self.valor)
+        if sucesso:
             conta.historico.adicionar_transacao(self)
+
+        return sucesso, mensagem

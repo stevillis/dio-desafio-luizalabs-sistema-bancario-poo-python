@@ -10,8 +10,8 @@ class Cliente:
     def contas(self) -> list:
         return self._contas
 
-    def realizar_transacao(self, conta, transacao) -> None:
-        transacao.registrar(conta)
+    def realizar_transacao(self, conta, transacao):
+        return transacao.registrar(conta)
 
     def adicionar_conta(self, conta) -> None:
         self._contas.append(conta)
