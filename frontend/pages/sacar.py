@@ -16,7 +16,7 @@ if __name__ == "__main__":
     streamlit_controller = StreamlitController(clientes, contas)
 
     st.set_page_config(
-        page_title="Desafio LuizaLabs - Sistema Bancário em POO com Python",
+        page_title="Desafio Luizalabs - Sistema Bancário em POO com Python",
         page_icon="💵",
     )
 

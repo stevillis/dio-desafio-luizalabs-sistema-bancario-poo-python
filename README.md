@@ -1,6 +1,6 @@
-# 🏦 Desafio LuizaLabs - Sistema Bancário em POO com Python
+# 🏦 Desafio Luizalabs - Sistema Bancário em POO com Python
 
-Bem-vindo ao **Sistema Bancário em POO com Python** desenvolvido como parte do desafio da DIO (Digital Innovation One) em parceria com o LuizaLabs!
+Bem-vindo ao **Sistema Bancário em POO com Python** desenvolvido como parte do desafio da DIO (Digital Innovation One) em parceria com o Luizalabs!
 
 ## 🎯 Situação
 
@@ -37,14 +37,14 @@ O resultado é um sistema bancário moderno, 100% funcional, e testável atravé
 1. Instale o Python 3.11.9 ou superior.
 
 2. (Recomendado) Crie e ative um ambiente virtual (venv) para isolar as dependências:
+   - No Windows:
 
-   * No Windows:
      ```bash
      python -m venv venv
      venv\Scripts\activate
      ```
 
-   * No Linux/macOS:
+   - No Linux/macOS:
      ```bash
      python -m venv venv
      source venv/bin/activate
