@@ -190,6 +190,26 @@ class StreamlitController(UIController):
             }
         )
 
+    def listar_clientes(self):
+        nomes_list = []
+        cpfs_list = []
+        data_nascimento_list = []
+        enderecos_list = []
+        for cliente in self.clientes:
+            nomes_list.append(cliente.nome)
+            cpfs_list.append(cliente.cpf)
+            data_nascimento_list.append(cliente.data_nascimento.strftime("%d/%m/%Y"))
+            enderecos_list.append(cliente._endereco)
+
+        return pd.DataFrame(
+            {
+                "Nome": nomes_list,
+                "CPF": cpfs_list,
+                "Data de Nascimento": data_nascimento_list,
+                "Endereço": enderecos_list,
+            }
+        )
+
     def recuperar_conta_cliente(self, cliente):
         if not cliente.contas:
             return None

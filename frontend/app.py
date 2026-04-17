@@ -7,6 +7,7 @@ if __name__ == "__main__":
         ],
         "Cadastro de Usuário": [
             st.Page("pages/criar_cliente.py", title="Criar Cliente"),
+            st.Page("pages/listar_clientes.py", title="Listar Clientes"),
         ],
         "Conta": [
             st.Page("pages/criar_conta.py", title="Criar Conta"),
