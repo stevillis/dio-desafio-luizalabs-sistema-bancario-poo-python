@@ -182,3 +182,14 @@ class StreamlitController(UIController):
                 "C/C": numeros_list,
             }
         )
+
+    def recuperar_conta_cliente(self, cliente):
+        if not cliente.contas:
+            return None
+
+        # FIXME: flitrar conta do cliente pelo número
+        return cliente.contas[0]
+
+    def depositar(self, cliente, conta, valor_deposito):
+        transacao = Deposito(valor_deposito)
+        cliente.realizar_transacao(conta, transacao)

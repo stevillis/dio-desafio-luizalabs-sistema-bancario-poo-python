@@ -13,8 +13,8 @@ if __name__ == "__main__":
             st.Page("pages/listar_contas.py", title="Listar Contas"),
         ],
         "Transação": [
-            st.Page("pages/sacar.py", title="Sacar"),
             st.Page("pages/depositar.py", title="Depositar"),
+            st.Page("pages/sacar.py", title="Sacar"),
         ],
         "Extrato": [
             st.Page("pages/extrato.py", title="Extrato"),
