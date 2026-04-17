@@ -174,15 +174,18 @@ class StreamlitController(UIController):
         numeros_list = []
         agencias_list = []
         titulares_list = []
+        cpfs_list = []
         for conta in self.contas:
             numeros_list.append(conta.numero)
             agencias_list.append(conta.agencia)
             titulares_list.append(conta.cliente.nome)
+            cpfs_list.append(conta.cliente.cpf)
 
         return pd.DataFrame(
             {
-                "Agência": agencias_list,
                 "Titular": titulares_list,
+                "CPF": cpfs_list,
+                "Agência": agencias_list,
                 "C/C": numeros_list,
             }
         )
