@@ -22,32 +22,39 @@ if __name__ == "__main__":
 
     st.title("Criar Conta")
 
-    with st.form("cadastro_cliente"):
-        cpf = st.text_input(
-            label="CPF:",
-            max_chars=11,
-            placeholder="Informe o CPF do cliente",
-        )
+    if "criar_conta_form_loaded" not in st.session_state:
+        st.session_state["criar_conta_form_loaded"] = False
 
-        if st.form_submit_button("Criar Conta", type="secondary"):
-            if not cpf:
-                st.error("O CPF é obrigatório!")
+    if not st.session_state["criar_conta_form_loaded"]:
+        if st.button(label="Nova Conta", type="secondary", use_container_width=True):
+            st.session_state["criar_conta_form_loaded"] = True
+            st.rerun()
+    else:
+        with st.form("cadastro_conta"):
+            cpf = st.text_input(
+                label="CPF:",
+                max_chars=11,
+                placeholder="Informe o CPF do cliente",
+            )
 
-            if cpf:
-                cliente = streamlit_controller.filtrar_cliente(cpf)
-                if not cliente:
-                    st.error(
-                        "Cliente não encontrado! Fluxo de criação de conta encerrado."
-                    )
-                else:
-                    streamlit_controller.criar_conta(cliente=cliente)
+            if st.form_submit_button("Criar Conta", type="secondary"):
+                if not cpf:
+                    st.error("O CPF é obrigatório!")
 
-                    st.balloons()
+                if cpf:
+                    cliente = streamlit_controller.filtrar_cliente(cpf)
+                    if not cliente:
+                        st.error(
+                            "Cliente não encontrado! Fluxo de criação de conta encerrado."
+                        )
+                    else:
+                        streamlit_controller.criar_conta(cliente=cliente)
 
-                    st.success(
-                        "Conta criada com sucesso! Redirecionando para a página inicial..."
-                    )
+                        st.success("Conta criada com sucesso!")
+                        time.sleep(2)
+                        del st.session_state["criar_conta_form_loaded"]
+                        st.rerun()
 
-                    time.sleep(3)
-
-                    st.switch_page("pages/home.py")
+        if st.button(label="Voltar", use_container_width=True, type="tertiary"):
+            del st.session_state["criar_conta_form_loaded"]
+            st.rerun()
