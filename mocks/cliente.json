@@ -1,0 +1,14 @@
+[
+    {
+        "nome": "João Silva Santos",
+        "cpf": "89983737000",
+        "data_nascimento": "15/03/1985",
+        "endereco": "Rua das Flores, 123 - Jardim Primavera - São Paulo/SP"
+    },
+    {
+        "nome": "Maria Oliveira Costa",
+        "cpf": "43378572060",
+        "data_nascimento": "22/07/1990",
+        "endereco": "Avenida Brasil, 456 - Centro - Rio de Janeiro/RJ"
+    }
+]
