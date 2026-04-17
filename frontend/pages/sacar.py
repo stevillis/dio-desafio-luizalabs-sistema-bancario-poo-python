@@ -68,8 +68,12 @@ if __name__ == "__main__":
                                     )
                                     if sucesso:
                                         st.success(mensagem)
+                                        st.balloons()
+
                                         time.sleep(2)
+
                                         del st.session_state["sacar_form_loaded"]
+
                                         st.rerun()
                                     else:
                                         st.error(mensagem)
