@@ -197,3 +197,7 @@ class StreamlitController(UIController):
     def depositar(self, cliente, conta, valor_deposito):
         transacao = Deposito(valor_deposito)
         return cliente.realizar_transacao(conta, transacao)
+
+    def sacar(self, cliente, conta, valor_saque):
+        transacao = Saque(valor_saque)
+        return cliente.realizar_transacao(conta, transacao)
